@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Collections() {
   const collections = [
     {
@@ -23,60 +25,67 @@ export default function Collections() {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-[#0B0B0B] py-24">
+    <section className="relative overflow-hidden bg-[#0B0B0B] py-28">
 
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute left-20 top-20 h-96 w-96 rounded-full bg-[#C9A227] blur-[180px]" />
-        <div className="absolute right-20 bottom-20 h-96 w-96 rounded-full bg-white blur-[200px]" />
+      {/* Background */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute left-0 top-20 h-80 w-80 rounded-full bg-[#C9A227] blur-[180px]" />
+        <div className="absolute right-0 bottom-0 h-96 w-96 rounded-full bg-white blur-[220px]" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6">
 
-        <div className="mb-16 text-center">
+        {/* Titre */}
+        <div className="mb-20 text-center">
 
-          <span className="text-sm uppercase tracking-[0.5em] text-[#C9A227]">
+          <span className="text-sm uppercase tracking-[0.6em] text-[#C9A227]">
             GHALITO
           </span>
 
-          <h2 className="mt-4 text-5xl font-black">
-            Collections Populaires
+          <h2 className="mt-5 text-4xl font-black md:text-6xl">
+            Collections Premium
           </h2>
 
-          <p className="mx-auto mt-6 max-w-2xl text-gray-400">
-            Chaque collection raconte une histoire. Choisissez celle qui
-            représente le mieux votre personnalité.
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-400">
+            Chaque collection possède sa propre identité. Trouvez celle
+            qui correspond à votre personnalité.
           </p>
 
         </div>
 
-        <div className="grid gap-10 md:grid-cols-2">
+        {/* Cartes */}
+        <div className="grid gap-8 sm:grid-cols-2 xl:grid-cols-4">
 
           {collections.map((item) => (
 
-            <div
+            <article
               key={item.title}
-              className="group overflow-hidden rounded-3xl border border-[#C9A227]/20 bg-[#111] transition-all duration-500 hover:-translate-y-2 hover:border-[#C9A227] hover:shadow-[0_0_40px_rgba(201,162,39,0.3)]"
+              className="group overflow-hidden rounded-3xl border border-[#C9A227]/20 bg-[#111111] transition-all duration-500 hover:-translate-y-3 hover:border-[#C9A227] hover:shadow-[0_20px_50px_rgba(201,162,39,0.25)]"
             >
 
-              <div className="relative overflow-hidden">
+              {/* Image */}
+              <div className="relative h-[380px] overflow-hidden">
 
-                <img
+                <Image
                   src={item.image}
                   alt={item.title}
-                  className="h-[420px] w-full object-cover transition duration-700 group-hover:scale-110"
+                  fill
+                  sizes="(max-width:768px)100vw,(max-width:1280px)50vw,25vw"
+                  className="object-cover transition duration-700 group-hover:scale-110"
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent" />
 
-                <div className="absolute right-5 top-5 rounded-full border border-[#C9A227] bg-black/60 px-4 py-1 text-xs uppercase tracking-widest text-[#C9A227] backdrop-blur">
+                <div className="absolute right-4 top-4 rounded-full border border-[#C9A227] bg-black/70 px-4 py-1 text-xs uppercase tracking-widest text-[#C9A227] backdrop-blur">
                   Premium
                 </div>
 
               </div>
 
-              <div className="p-8">
+              {/* Texte */}
+              <div className="p-7">
 
-                <h3 className="text-3xl font-bold">
+                <h3 className="text-2xl font-bold transition duration-300 group-hover:text-[#C9A227]">
                   {item.title}
                 </h3>
 
@@ -84,13 +93,13 @@ export default function Collections() {
                   {item.description}
                 </p>
 
-                <button className="mt-8 rounded-full border border-[#C9A227] px-8 py-3 text-sm uppercase tracking-widest transition-all duration-300 hover:translate-x-2 hover:bg-[#C9A227] hover:text-black">
+                <button className="mt-8 rounded-full border border-[#C9A227] px-7 py-3 text-sm uppercase tracking-widest transition-all duration-300 hover:bg-[#C9A227] hover:text-black hover:shadow-[0_0_20px_rgba(201,162,39,0.5)]">
                   Découvrir →
                 </button>
 
               </div>
 
-            </div>
+            </article>
 
           ))}
 
